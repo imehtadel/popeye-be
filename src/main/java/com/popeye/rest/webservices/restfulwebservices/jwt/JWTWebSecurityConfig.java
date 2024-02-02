@@ -32,8 +32,8 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtTokenAuthorizationOncePerRequestFilter jwtAuthenticationTokenFilter;
 
-    @Value("${jwt.get.token.uri}")
-    private String authenticationPath;
+//    @Value("${jwt.get.token.uri}")
+    private String authenticationPath="/authenticate";
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

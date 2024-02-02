@@ -26,8 +26,8 @@ import com.popeye.rest.webservices.restfulwebservices.jwt.JwtTokenUtil;
 //@CrossOrigin(origins="http://localhost:4200")Replace with global config
 public class JwtAuthenticationRestController {
 
-  @Value("${jwt.http.request.header}")
-  private String tokenHeader;
+//  @Value("${jwt.http.request.header}")
+  private String tokenHeader="Authorization";
 
   @Autowired
   private AuthenticationManager authenticationManager;
@@ -38,7 +38,7 @@ public class JwtAuthenticationRestController {
   @Autowired
   private UserDetailsService jwtInMemoryUserDetailsService;
 
-  @RequestMapping(value = "${jwt.get.token.uri}", method = RequestMethod.POST)
+  @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
   public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtTokenRequest authenticationRequest)
       throws AuthenticationException {
 
@@ -51,7 +51,7 @@ public class JwtAuthenticationRestController {
     return ResponseEntity.ok(new JwtTokenResponse(token));
   }
 
-  @RequestMapping(value = "${jwt.refresh.token.uri}", method = RequestMethod.GET)
+  @RequestMapping(value = "/refresh", method = RequestMethod.GET)
   public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
     String authToken = request.getHeader(tokenHeader);
     final String token = authToken.substring(7);
