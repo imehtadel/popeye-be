@@ -1,4 +1,4 @@
-package com.popeye.hello;
+package com.popeye.rest.webservices.restfulwebservices.helloworld;
 
 public class HelloWorldBean {
 
@@ -18,7 +18,7 @@ public class HelloWorldBean {
 
 	@Override
 	public String toString() {
-		return String.format("HelloWorldBean [message=%s]", message);
+		return String.format("Hello World Bean [message=%s]", message);
 	}
 
 }
